@@ -1,0 +1,167 @@
+/* Profiles.css
+   ───────────────────────────────────────────────────────────
+   Styling for the Profiles tab only.
+   Wardrobe-History has its own stylesheet.
+   ─────────────────────────────────────────────────────────── */
+
+/* ========== configurable vars ========== */
+:root {
+  --thumb-height: 200px;   /* change this to make thumbnails taller/shorter */
+  --border-clr:   #ddc8a3;
+  --wood-brown:   #6b4d29;
+}
+
+/* ───── container & title ───── */
+.profiles-container {
+  padding: 2rem;
+  background: #f5efe0;
+}
+
+.profiles-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #3b1f10;
+  margin-bottom: 1.5rem;
+}
+
+/* ───── grid of profile cards ───── */
+.user-list {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.user-card {
+  background: #fff;
+  border: 2px solid var(--border-clr);
+  border-radius: 0.8rem;
+  padding: 0.6rem;
+  display: flex;                 /* make card a column layout */
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;              /* clip anything that tries to spill */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.user-thumb {
+  width: 100%;
+  height: var(--thumb-height);   /* fixed height via variable */
+  aspect-ratio: 3 / 4;           /* keep portrait feel */
+  object-fit: cover;
+  border-radius: 0.6rem;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.user-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #a08256;
+  text-align: center;
+}
+
+/* ───── modal overlay & box ───── */
+.profile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.profile-modal-content {
+  background: #fffdf6;
+  border: 3px solid #b1905c;
+  border-radius: 0.9rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 100vh;
+  padding: 1.8rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow-y: auto;
+}
+
+.profile-modal-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--wood-brown);
+  cursor: pointer;
+}
+
+/* ───── modal content ───── */
+.modal-user-name {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--wood-brown);
+  margin-bottom: 0.8rem;
+}
+
+.profile-modal-image {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  border: 2px solid var(--border-clr);
+  margin: 0.6rem auto 1rem;
+}
+
+.profile-section {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.profile-section strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #3b1f10;
+}
+
+.profile-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+/* ───── “Set as current” button ───── */
+.set-active-btn {
+  display: block;
+  margin: 0.8rem auto 0;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  border: 2px solid var(--wood-brown);
+  background: transparent;
+  color: var(--wood-brown);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.set-active-btn:hover {
+  background: var(--wood-brown);
+  color: #fff;
+}
+
+/* ───── error text ───── */
+.error {
+  color: #b00020;
+  text-align: center;
+}

@@ -1,0 +1,53 @@
+.main-header {
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: 400px;
+  }
+
+.tutorial-block {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.tutorial-images{
+    max-width: 800px;
+    align-self: center;
+    display: block;
+    border-radius: 20px;
+}
+
+.navigation-buttons {
+    max-height: 120px;
+    
+}
+
+.nav-images {
+    margin-top: 20px;
+    max-width: 100px;
+    padding: 10px;
+    object-fit: contain;
+    filter: saturate(50%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    border-radius: 20px;
+}
+
+.nav-images:hover {
+    filter: grayscale(0%) saturate(120%);
+    transform: scale(1.05); /* Grows slightly on hover */
+    cursor: pointer;
+}
+
+
+.hovered {
+    filter: grayscale(0%) saturate(120%);
+    transform: scale(1.05); /* Grows slightly on hover */
+}
+
+.disabled-nav {
+    filter: grayscale(100%) saturate(0%);
+    opacity: 0.5;
+    cursor: not-allowed;
+    max-width: 100px;
+    padding:10px
+}

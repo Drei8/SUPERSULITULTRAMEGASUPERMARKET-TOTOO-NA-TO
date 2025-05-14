@@ -1,0 +1,370 @@
+/* src/components/Camera.css */
+
+/* ── Theme Variables ───────────────────────────────────────────────────────── */
+:root {
+  --bg-accent:     #ddc8a3;
+  --border-color:  #a08256;
+  --btn-hover:     #b89a6c;
+  --text-color:    #3b1f10;
+  --radius:        1rem;
+  --padding:       0.5rem;
+  --blue:          #007bff;
+  --blue-dark:     #0056b3;
+}
+
+/* ── Wrapper ───────────────────────────────────────────────────────────────── */
+.camera-wrapper {
+
+  display: flex;
+  align-items: flex-start;
+
+  padding-left: 10rem;
+
+  border-radius: var(--radius);
+
+  
+}
+
+/* ── Mode-Toggle Button ─────────────────────────────────────────────────────── */
+.mode-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-accent);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mode-toggle:hover {
+  background: var(--btn-hover);
+}
+
+.mode-icon {
+  width: 1.2rem;
+  height: auto;
+}
+
+.mode-label {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+/* ── Progress Steps ─────────────────────────────────────────────────────────── */
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  margin-top: 100px;
+  
+}
+
+.step {
+  padding: 0.4rem 0.8rem;
+  border-left: 4px solid #ccc;
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+  color: var(--text-color);
+
+  
+}
+
+.step.active {
+  border-color: var(--brown);
+  font-weight: bold;
+  opacity: 1;
+}
+
+/* ── Webcam Container with Frame ───────────────────────────────────────────── */
+/*
+.webcam-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: var(--padding);
+  background: #945200;
+  
+}*
+
+/* rotate & constrain the video feed */
+.camera-feedback {
+  transform: rotate(90deg);
+  transform-origin: center;
+  max-width: 700px; /* original height after rotation */
+  margin-left: 200px;
+  margin-top: 230px;
+}
+
+/* ensure the <video> fills the parent container */
+.camera-feedback video {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* ── Overlays ───────────────────────────────────────────────────────────────── */
+.countdown-overlay,
+.processing-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+}
+.countdown-overlay{
+  position: absolute;
+  top: 50%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+}
+
+/* ── Controls & Capture Button ──────────────────────────────────────────────── */
+.controls {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.capture-button {
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  color: #fff;
+  background-color: var(--blue);
+  border: none;
+
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 780px;
+  margin-right: 690px;
+}
+
+.capture-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.capture-button:hover:not(:disabled) {
+  background-color: var(--blue-dark);
+  transform: translateY(-2px);
+}
+
+/* ── Result Screen ──────────────────────────────────────────────────────────── */
+.result-container {
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  
+}
+
+.result-container h3,
+.result-container h4 {
+  margin: 0.5rem 0 0.25rem;
+  color: var(--text-color);
+}
+
+.result-container pre {
+  background: #f8f9fa;
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  overflow: auto;
+  font-size: 0.9rem;
+}
+
+.result-container button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.skibidi-button {
+  background-color: var(--accent-bg);
+  color: var(--text-color);
+}
+
+.restart-button {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+/* ── Error Text ─────────────────────────────────────────────────────────────── */
+.error {
+  color: #c00;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+
+/* Guide overlay positioned to the right side of the webcam container */
+.guide-imge {
+  position: absolute;
+  max-width: 300px;                   /* shrink if needed */
+
+  left: 25rem;
+  border-radius: 1rem;/* sit above the video feed */
+  position: absolute;
+  margin-top: 400px;
+}
+
+/* error modal */
+.error-modal-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.55);
+  display:flex; align-items:center; justify-content:center; z-index:1000;
+}
+.error-modal{
+  background:#fff; max-width:360px; width:90%; padding:2rem 2.2rem;
+  border:2px solid var(--vto-accent); border-radius:10px; text-align:center;
+  animation:pop .25s ease-out;
+}
+.error-modal h3{ margin:0 0 .6rem; color:var(--vto-accent);}
+.error-modal p { margin:0 0 1rem; line-height:1.45;}
+.error-btn{
+  background:var(--vto-accent); color:#fff; border:none; border-radius:6px;
+  padding:.55rem 1.4rem; cursor:pointer;
+}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ------------------ Result Container ------------------ */
+.result-container {
+  max-width: 500px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  font-family: 'Nunito', sans-serif;
+  color: #333;
+}
+
+/* Header */
+.result-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.result-header h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.request-number {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Measurements Grid */
+.measurements-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.measurement-item {
+  background: #f9f9f9;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.measurement-item .label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+.measurement-item .value {
+  font-size: 1.1rem;
+  color: #3b1f10;
+}
+
+/* Sizing */
+.sizing-title {
+  font-size: 1.1rem;
+  margin: 1rem 0 0.5rem;
+  text-align: center;
+  color: #6b5b95;
+}
+.sizing-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.sizing-item {
+  background: #fff0f6;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.sizing-item .region {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  color: #555;
+}
+.sizing-item .size {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0d00ff;
+}
+
+/* Buttons */
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn.save {
+  background: #6b5b95;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(107,91,149,0.4);
+}
+.btn.save:hover {
+  box-shadow: 0 6px 16px rgba(107,91,149,0.5);
+}
+.btn.restart {
+  background: #f2e2c4;
+  color: #3b1f10;
+  box-shadow: 0 4px 12px rgba(242,226,196,0.4);
+}
+.btn.restart:hover {
+  box-shadow: 0 6px 16px rgba(242,226,196,0.5);
+}
+

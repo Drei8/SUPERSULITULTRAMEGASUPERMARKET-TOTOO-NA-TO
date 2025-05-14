@@ -1,0 +1,193 @@
+:root {
+  --vto-accent: #a77044;        /* warm wood-brown */
+  --vto-accent-light: #c2935f;  /* highlight brown */
+  --vto-bg: #f7f1e1;            /* soft beige */
+  --vto-box-bg: #fff8ec;
+  --vto-border: #9a6b3f;
+  --vto-transition: 0.3s ease;
+  --vto-radius: 14px;
+}
+
+.vto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  background: var(--vto-bg);
+  min-height: 100%;
+  margin-left: -200px;
+}
+
+.vto-panels {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: 255px;
+}
+
+.vto-panel {
+  flex: 1;
+  max-width: 480px;
+  transition: transform 0.2s ease;
+}
+
+.vto-panel:hover {
+  transform: scale(1.02);
+}
+
+.vto-title {
+  text-align: center;
+  color: var(--vto-accent);
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.vto-title-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vto-box {
+  border: 3px solid var(--vto-border);
+  border-radius: var(--vto-radius);
+  background: var(--vto-box-bg);
+  padding: 1.5rem;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: box-shadow var(--vto-transition);
+}
+
+.vto-box:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.vto-text {
+  color: var(--vto-accent);
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  max-width: 80%;
+  margin-top: 100px;
+}
+
+.vto-action-btn,
+.vto-try-btn {
+  background-color: transparent;
+  color: var(--vto-accent);
+  border: 2px solid var(--vto-accent);
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: var(--vto-radius);
+  cursor: pointer;
+  transition: background var(--vto-transition), color var(--vto-transition), box-shadow 0.3s;
+}
+
+.vto-action-btn:hover,
+.vto-try-btn:hover {
+  background: var(--vto-accent);
+  color: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.vto-button-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.vto-try-btn {
+  font-size: 1.1rem;
+  padding: 12px 32px;
+  margin-left: 255px;
+  margin-top: 1rem;
+}
+
+.vto-thumb {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid #d6c2ab;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.vto-thumb.avatar {
+  max-height: 350px;
+  height: auto;
+  rotate: 90deg;
+}
+
+.vto-thumb.rotate {
+  transform: rotate(90deg);
+}
+
+.vto-modal-overlay {
+  display: flex;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.vto-modal {
+  background: var(--vto-bg);
+  padding: 2rem;
+  border-radius: var(--vto-radius);
+  max-width: 650px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vto-modal-title {
+  color: var(--vto-accent);
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.vto-result-box {
+  margin-bottom: 1.2rem;
+}
+
+.vto-result-box img {
+  max-width: 100%;
+  border-radius: var(--vto-radius);
+}
+/* --- keep the try-on result bounded ----------------------------------- */
+.vto-result-box{
+  /* make the result box itself act like the preview boxes */
+  width:100%;
+  height:600px;                 /* same fixed height as .vto-box            */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;              /* nothing can spill outside                */
+  border:3px solid var(--vto-border);
+  border-radius:var(--vto-radius);
+  background:var(--vto-box-bg);
+}
+
+.vto-result-box img{
+  max-width:100%;               /* never wider than the box                 */
+  max-height:100%;              /* never taller than the box                */
+  object-fit:contain;           /* letter-box it while keeping proportions  */
+  border-radius:var(--vto-radius);
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+/* ---------------------------------------------------------------------- */

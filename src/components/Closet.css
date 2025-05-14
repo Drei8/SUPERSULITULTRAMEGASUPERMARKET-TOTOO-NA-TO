@@ -1,0 +1,337 @@
+.closet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 1580px;
+
+
+  box-sizing: border-box;
+}
+
+.closet-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  color: #000000;
+  text-align: center;
+  margin-bottom: 2vw;
+  padding: 1vw 2vw;
+  background: linear-gradient(to bottom, #D2B48C, #C68E17);
+  border-radius: 20px;
+  width: clamp(150px, 20vw, 200px);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5vw;
+  margin-bottom: 2vw;
+  padding-left: 1vw;
+  justify-content: center;
+}
+
+.category-button {
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1rem, 3vw, 2rem);
+  background: linear-gradient(to bottom, #D2B48C, #C68E17);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.category-button.active {
+  background: linear-gradient(to bottom, #4AAE9B, #389B87);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px rgba(74, 174, 155, 0.3);
+}
+
+.category-button:hover {
+  background: linear-gradient(to bottom, #C68E17, #A67B17);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.closet-grid-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1vw;
+}
+
+.closet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 2vw;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 1vw;
+  justify-content: center;
+
+}
+
+.closet-item {
+  background: #F5E8C7;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1vw;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  text-align: center;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.closet-item:hover {
+  transform: scale(1.05);
+  border-color: #4AAE9B;
+}
+
+.closet-item.selected {
+  border-color: #4AAE9B;
+  box-shadow: 0 6px 15px rgba(74, 174, 155, 0.3);
+}
+
+.closet-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(120px, 15vw, 180px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.closet-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.closet-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+  color: #000000;
+  margin-top: 1vw;
+  word-break: break-word;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.closet-item:hover .closet-thumbnail {
+  transform: scale(1.1);
+}
+
+.closet-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.closet-item:hover .closet-overlay {
+  opacity: 1;
+}
+
+/* === Existing Closet.css styles above this line === */
+
+/* ... other styles ... */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75); /* Slightly darker overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px; /* Add some padding for smaller screens so modal doesn't touch edges */
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: #FFFFFF; /* Clean white background for the modal */
+  border-radius: 16px; /* Softer, slightly larger radius */
+  padding: clamp(1.5rem, 4vw, 2.5rem); /* Responsive padding */
+  width: 90%;
+  max-width: 480px; /* Max width for the modal, adjust as needed */
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid #E0E0E0; /* Optional: subtle border */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: clamp(10px, 2vw, 15px);   /* Responsive positioning */
+  right: clamp(10px, 2vw, 15px);
+  background: transparent;
+  font-size: clamp(1.8rem, 4vw, 2.2rem); /* Responsive font size */
+  border: none;
+  color: #777777; /* Subtler close icon color */
+  cursor: pointer;
+  line-height: 1;
+  padding: 5px; /* Easier to click */
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #333333;
+}
+
+.modal-image {
+  width: 100%;
+  max-width: 280px; /* Control max size of image */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 350px; /* Max height for the image preview */
+  object-fit: contain;
+  border-radius: 10px; /* Rounded corners for the image */
+  margin-bottom: clamp(1rem, 3vw, 1.5rem); /* Space below image */
+  /* border: 1px solid #F0F0F0; /* Optional: very light border around image */
+}
+
+.modal-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3.5vw, 1.75rem); /* Responsive title size */
+  color: #2c3e50; /* Dark, professional color */
+  margin-bottom: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.3;
+}
+
+.modal-sizes {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.5vw, 0.75rem); /* Responsive gap */
+  margin-bottom: clamp(1.5rem, 4vw, 2rem); /* Space below sizes */
+  flex-wrap: wrap;
+}
+
+.size-badge {
+  background-color: #34495e; /* Dark slate blue/gray, similar to reference */
+  color: #FFFFFF;
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem); /* Responsive padding */
+  border-radius: 20px; /* Pill shape */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500; /* Slightly less bold than title */
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem); /* Responsive font size */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: default; /* Assuming sizes are not interactive for now */
+  /* If you want them to be interactive (e.g., select a size):
+  cursor: pointer;
+  */
+}
+
+/* Optional: hover effect if badges become interactive
+.size-badge:hover {
+  background-color: #2c3e50;
+  transform: translateY(-2px);
+}
+*/
+
+.try-on-button {
+  background: linear-gradient(to bottom, #4AAE9B, #389B87); /* Using your existing Closet accent gradient */
+  color: #FFFFFF;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(2rem, 8vw, 4rem); /* Generous, responsive padding */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem); /* Responsive font size */
+  border: none;
+  border-radius: 8px; /* Consistent with other buttons */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Make button take more width */
+  max-width: 300px; /* But not excessively wide */
+  box-shadow: 0 4px 10px rgba(74, 174, 155, 0.3);
+}
+
+.try-on-button:hover {
+  background: linear-gradient(to bottom, #3C907E, #2E6F5F); /* Darker shade on hover */
+  transform: translateY(-2px);
+}
+
+
+/* === Existing Closet.css styles below this line === */
+
+.modal-close {
+  position: absolute;
+  top: 1vw;
+  right: 1.5vw;
+  background: transparent;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  border: none;
+  color: #888;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .closet-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  .closet-item {
+    padding: 0.5vw;
+  }
+  .closet-image-wrapper {
+    height: clamp(100px, 12vw, 120px);
+  }
+  .category-tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+  }
+  .modal-content {
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .closet-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  .closet-title {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    width: clamp(120px, 18vw, 150px);
+  }
+  .category-button {
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.8rem, 2vw, 1rem);
+  }
+  .closet-label {
+    font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+  }
+}

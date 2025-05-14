@@ -1,0 +1,71 @@
+/* App.css */
+
+/* === Variables === */
+:root {
+  --sidebar-width: 250px;
+  --sidebar-bg: #F2E2C4;
+  --main-bg: #F7F1E1;
+  --accent: #6B5B95;
+  --text: #333;
+  --transition: 0.3s ease;
+}
+
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+  background: var(--main-bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* === Layout === */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* === Sidebar === */
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  padding: 2rem 1.5rem;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+
+  /* ← add these two lines: */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;  /* smooth iOS scrolling */
+}
+
+/* Optional: custom scrollbar styling in WebKit browsers */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+/* === Main Content === */
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex-direction: column;
+
+  width: 1660px;
+  overflow-y: auto;
+}
+

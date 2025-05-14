@@ -1,0 +1,39 @@
+{
+  "userName": "",
+  "measurements": [
+    {
+      "label": "Chest Circumference",
+      "value": "96.7 cm"
+    },
+    {
+      "label": "Hip Circumference",
+      "value": "119.7 cm"
+    },
+    {
+      "label": "Shoulder Width",
+      "value": "40.7 cm"
+    },
+    {
+      "label": "Thigh Circumference",
+      "value": "55.9 cm"
+    },
+    {
+      "label": "Waist Circumference",
+      "value": "92.0 cm"
+    }
+  ],
+  "recommendations": [
+    {
+      "region": "asian",
+      "label": "XXL"
+    },
+    {
+      "region": "european",
+      "label": "XL"
+    },
+    {
+      "region": "western",
+      "label": "XL"
+    }
+  ]
+}
