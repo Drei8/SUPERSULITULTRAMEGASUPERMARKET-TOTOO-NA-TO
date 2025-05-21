@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./Profiles.css";
 
-const BASE_URL1 = "http://127.0.0.1:5001";
+const BASE_URL1 = "http://127.0.0.1:4001";
 
 /* ───────────────────────────────────────────────────────────
    Helper component: draws the image onto an off-screen canvas,

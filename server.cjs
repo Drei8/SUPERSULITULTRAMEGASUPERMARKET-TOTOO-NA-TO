@@ -93,7 +93,7 @@ app.get('/api/getWardrobeItems', (_req, res) => {
 });
 
 /* ──────────────────────────  SERVER  ───────────────────────────── */
-const PORT = 5001;
+const PORT = 4001;
 app.listen(PORT, () =>
   console.log(
     `API ready at http://localhost:${PORT}\n` +

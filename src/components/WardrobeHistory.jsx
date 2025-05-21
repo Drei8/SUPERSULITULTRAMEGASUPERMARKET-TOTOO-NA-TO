@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./WardrobeHistory.css";
 
-const API = "http://127.0.0.1:5001/api/getWardrobeItems";
+const API = "http://localhost:4001/api/getWardrobeItems";
 
 export default function WardrobeHistory() {
   const [items,   setItems]   = useState([]);
